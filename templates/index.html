@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block form_for_add_note %}
+    <form method="post">
+        <input class="form-control form-control-lg u-text u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" name="note" type="text" placeholder="Добавить заметку">
+        <button class="btn btn-warning u-text u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" type="submit">Добавить</button>
+    </form>
+{% endblock %}

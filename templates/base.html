@@ -1,0 +1,97 @@
+
+<!DOCTYPE html><html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Hello!">
+    <meta name="description" content>
+    <title>1234</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="//capp.nicepage.com/bdb1a014bc1ed828106e942e837c1aade7693570/nicepage.css" media="screen" class="u-static-style">
+    <script class="u-script" type="text/javascript" src="//capp.nicepage.com/assets/jquery-1.9.1.min.js" defer></script>
+    <script class="u-script" type="text/javascript" src="//capp.nicepage.com/bdb1a014bc1ed828106e942e837c1aade7693570/nicepage.js" defer></script>
+    <meta name="generator" content="Nicepage 4.18.8, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <style class="u-style"></style>
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "https://website529400.nicepage.io/1234.html"
+}</script>
+    <meta name="theme-color" content="#0066ff">
+    <meta property="og:title" content="1234">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://website529400.nicepage.io/1234.html">
+
+</head>
+<nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Plain Notes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history/">История</a>
+          </li>
+        </ul>
+        <form method="post"  action="/search/" role="search">
+          <input class="form-control" type="search" placeholder="Искать" name="search_text" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+  <body class="u-body u-xl-mode" data-lang="en">
+
+    <section class="u-align-left u-clearfix u-grey-5 u-section-2" id="carousel_0852">
+      <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <h2 class="u-text u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500">Простой сервис для списка задач</h2>
+          <br>
+
+        {% block form_for_add_note %}
+        {% endblock %}
+
+        <div class="u-expanded-width u-list u-list-1 tasks-background">
+          <div class="u-repeater u-repeater-1">
+              {% for record in records %}
+            <div class="u-align-left u-border-10 u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-base u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle u-white u-list-item-1 " data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250">
+                <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"><span class="u-custom-item u-file-icon u-icon u-text-palette-2-base u-icon-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="750"><img src="/static{{ record.icon }}" alt></span>
+                <h4 class="u-text u-text-5" > {{ record.name }}</h4>
+                    <h6 class="u-text u-text-5"> {{ record.created_at }}</h6>
+                    <br>
+                        <a class="btn btn-danger" href="/delete/{{ record._id }}" role="button">Удалить</a>
+                    <br>
+                    {% if record.is_active %}
+                    <a class="btn btn-success" href="/complete/{{ record._id }}" role="button">Отметить как выполненное</a>
+                    {% else %}
+                    <a class="btn btn-success" href="/return/{{ record._id }}" role="button">Вернуть в активные</a>
+                    {% endif %}
+              </div>
+            </div>
+              {% else %}
+              <h1>Список пока пуст...</h1>
+               {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</body>
+<div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="/history/" class="nav-link px-2 text-muted">History</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2022 Company, Inc</p>
+  </footer>
+</div>
+</html>
