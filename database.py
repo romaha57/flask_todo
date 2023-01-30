@@ -11,7 +11,7 @@ from pymongo.cursor import Cursor
 def connect_to_mongodb() -> Collection:
     """Подключает клиент mongoDB и создаем индекс для поиска"""
 
-    client = MongoClient('mongodb://localhost:27017/')
+    client = MongoClient('mongodb://mongo:27017/')
     db = client.flask_db
     collection = db.todo_list
     collection.create_index([('name', pymongo.TEXT)], name='search_index', default_language='russian')

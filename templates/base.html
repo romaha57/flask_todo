@@ -28,7 +28,7 @@
 </head>
 <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Plain Notes</a>
+      <a class="navbar-brand" href="{{ url_for('index') }}">Plain Notes</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,10 +36,10 @@
       <div class="collapse navbar-collapse" id="navbarsExample02">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/history/">История</a>
+            <a class="nav-link" href="{{ url_for('show_history_notes') }}">История</a>
           </li>
         </ul>
         <form method="post"  action="/search/" role="search">
@@ -66,12 +66,12 @@
                 <h4 class="u-text u-text-5" > {{ record.name }}</h4>
                     <h6 class="u-text u-text-5"> {{ record.created_at }}</h6>
                     <br>
-                        <a class="btn btn-danger" href="/delete/{{ record._id }}" role="button">Удалить</a>
+                        <a class="btn btn-danger" href="{{ url_for('delete_task', task_id=record._id ) }}" role="button">Удалить</a>
                     <br>
                     {% if record.is_active %}
-                    <a class="btn btn-success" href="/complete/{{ record._id }}" role="button">Отметить как выполненное</a>
+                    <a class="btn btn-success" href="{{ url_for('complete_task_func', task_id=record._id ) }}" role="button">Отметить как выполненное</a>
                     {% else %}
-                    <a class="btn btn-success" href="/return/{{ record._id }}" role="button">Вернуть в активные</a>
+                    <a class="btn btn-success" href="{{ url_for('return_task', task_id=record._id ) }}" role="button">Вернуть в активные</a>
                     {% endif %}
               </div>
             </div>
@@ -88,8 +88,8 @@
 <div class="container">
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="/history/" class="nav-link px-2 text-muted">History</a></li>
+      <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="{{ url_for('show_history_notes') }}" class="nav-link px-2 text-muted">History</a></li>
     </ul>
     <p class="text-center text-muted">© 2022 Company, Inc</p>
   </footer>
