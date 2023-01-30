@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, redirect, render_template, request
 
-from database import connect_to_mongodb, insert_in_db, get_tasks, get_desired_task, \
-    delete_from_db, complete_task, return_task_in_active
-
+from database import (complete_task, connect_to_mongodb, delete_from_db,
+                      get_desired_task, get_tasks, insert_in_db,
+                      return_task_in_active)
 
 app = Flask(__name__)
 
